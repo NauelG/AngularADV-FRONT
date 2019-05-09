@@ -14,6 +14,7 @@ declare function init_plugins();
 export class LoginComponent implements OnInit {
 
   recuerdame: boolean = false;
+  email: string;
 
   constructor(
     public router: Router,
@@ -22,6 +23,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     init_plugins();
+    this.email = localStorage.getItem( 'email' ) || '';
+    if ( this.email !== '' ) {
+      this.recuerdame = true;
+    }
   }
 
   ingresar( forma: NgForm ) {
